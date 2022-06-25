@@ -1,17 +1,33 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore as rawConfigureStore } from '@reduxjs/toolkit'
+import {
+    TypedUseSelectorHook,
+    useSelector as rawUseSelector,
+    useDispatch as rawUseDispatch,
+} from 'react-redux'
+import { rootReducer } from './rootReducer'
+import { loggerMiddleware } from './middleware/loggerMiddleware'
 
-export default function configureAppStore(preloadedState: any) {
-  const store = configureStore({
-    reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(loggerMiddleware),
-    preloadedState,
-    enhancers: [monitorReducersEnhancer],
-  });
-
-
-  return store;
+/*
+ *
+ * */
+function configureStore<T extends Record<any, any>>(preloadedState?: T) {
+    return rawConfigureStore({
+        reducer: rootReducer,
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware().concat(loggerMiddleware),
+        preloadedState,
+        // TODO: causing type error
+        // enhancers: [monitorReducerEnhancer],
+    })
 }
 
-export type RootState = ReturnType<typeof configureAppStore>;
-export type AppDispatch = typeof configureAppStore().dispatch;
+/*
+ * initializing redux
+ * */
+export const store = configureStore()
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+
+export const useDispatch = () => rawUseDispatch<AppDispatch>()
+export const useSelector: TypedUseSelectorHook<RootState> = rawUseSelector
