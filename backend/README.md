@@ -1,7 +1,10 @@
 # Debate App Backend
 
 ## Tech stack
-Node.js, Express, Prisma, Postgresql, Typescript
+Node.js, Express, Prisma, Postgresql, Typescript, Docker
+
+## Requirements
+Need Docker installed https://docs.docker.com/get-docker/
 
 https://www.prisma.io/docs/concepts/components/prisma-cli/installation
 ## Environment Variables
