@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Debate App Backend
+
+## Tech stack
+Node.js, Express, Prisma, Postgresql, Typescript
 
 https://www.prisma.io/docs/concepts/components/prisma-cli/installation
+## Environment Variables
+
+create .env file in /backend directory and copy .env.example contents
 
 ## Available Scripts
 
