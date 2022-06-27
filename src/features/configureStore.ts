@@ -4,13 +4,13 @@ import {
     useSelector as rawUseSelector,
     useDispatch as rawUseDispatch,
 } from 'react-redux'
-import { rootReducer } from './rootReducer'
-import { loggerMiddleware } from './middleware/loggerMiddleware'
+import { rootReducer } from '@features/rootReducer'
+import { loggerMiddleware } from '@features/loggerMiddleware.middleware'
 
 /*
- *
+ * @return EnhanceStore
  * */
-function configureStore<T extends Record<any, any>>(preloadedState?: T) {
+function configureStore<T extends Record<any, any>>(preloadedState = {} as T) {
     return rawConfigureStore({
         reducer: rootReducer,
         middleware: (getDefaultMiddleware) =>

@@ -6,6 +6,13 @@
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": "./",
+    "strictNullChecks": true,
+    "paths": {
+      "@features/*": ["./src/features/*"],
+      "@theme/*": ["./src/theme/*"]
+    },
+    "importHelpers": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,7 +26,17 @@
     "noImplicitAny": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "useUnknownInCatchVariables": false,
+    /* Strict Type-Checking Options */
+    "strictFunctionTypes": true,           /* Enable strict checking of function types. */
+    // "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
+    "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
+    // "alwaysStrict": true,                  /* Parse in strict mode and emit "use strict" for each source file. */
+    /* Additional Checks */
+    // "noUnusedLocals": true,                /* Analytic errors on unused locals. */
+    "noUnusedParameters": true,            /* Analytic errors on unused parameters. */
+    // "noImplicitReturns": true,             /* Analytic error when not all code paths in function return a value. */
   },
   "include": [
     "src"
