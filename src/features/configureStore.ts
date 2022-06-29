@@ -1,4 +1,7 @@
-import { configureStore as rawConfigureStore } from '@reduxjs/toolkit'
+import {
+    applyMiddleware,
+    configureStore as rawConfigureStore,
+} from '@reduxjs/toolkit'
 import {
     TypedUseSelectorHook,
     useSelector as rawUseSelector,
@@ -6,6 +9,7 @@ import {
 } from 'react-redux'
 import { rootReducer } from '@features/rootReducer'
 import { loggerMiddleware } from '@features/loggerMiddleware.middleware'
+import { monitorReducerEnhancer } from '@features/monitorReducers.enhancers'
 
 /*
  * @return EnhanceStore
@@ -16,8 +20,8 @@ function configureStore<T extends Record<any, any>>(preloadedState = {} as T) {
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware().concat(loggerMiddleware),
         preloadedState,
-        // TODO: causing type error
-        // enhancers: [monitorReducerEnhancer],
+        //@ts-ignore
+        enhancers: [applyMiddleware(monitorReducerEnhancer)],
     })
 }
 
