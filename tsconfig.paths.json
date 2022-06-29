@@ -2,8 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@features/*": ["./src/theme/*"],
-      "@theme/*": ["./src/features/*"]
+      "@features/*": ["./src/features/*"],
+      "@theme/*": ["./src/theme/*"]
     }
   }
 }

@@ -1,7 +1,4 @@
-import {
-    applyMiddleware,
-    configureStore as rawConfigureStore,
-} from '@reduxjs/toolkit'
+import { configureStore as rawConfigureStore } from '@reduxjs/toolkit'
 import {
     TypedUseSelectorHook,
     useSelector as rawUseSelector,
@@ -9,7 +6,6 @@ import {
 } from 'react-redux'
 import { rootReducer } from '@features/rootReducer'
 import { loggerMiddleware } from '@features/loggerMiddleware.middleware'
-import { monitorReducerEnhancer } from '@features/monitorReducers.enhancers'
 
 /*
  * @return EnhanceStore
@@ -20,8 +16,6 @@ function configureStore<T extends Record<any, any>>(preloadedState = {} as T) {
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware().concat(loggerMiddleware),
         preloadedState,
-        //@ts-ignore
-        enhancers: [applyMiddleware(monitorReducerEnhancer)],
     })
 }
 
