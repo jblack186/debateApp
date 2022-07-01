@@ -39,5 +39,5 @@ fi
 
 sleep 3
 
-npm run dev
+yarn run dev
 echo "Starting server"
