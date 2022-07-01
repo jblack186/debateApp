@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -6,6 +7,8 @@
       "dom.iterable",
       "esnext"
     ],
+    "strictNullChecks": true,
+    "importHelpers": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,7 +22,11 @@
     "noImplicitAny": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "preserve",
+    "useUnknownInCatchVariables": false,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": true
   },
   "include": [
     "src"

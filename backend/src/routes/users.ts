@@ -11,7 +11,7 @@ userRouter.get('/', async (req, res) => {
       })
     }
     return res.status(200).send(users)
-    
+
   } catch(err) {
    return res.status(500).json({
       error: err
@@ -22,8 +22,7 @@ userRouter.get('/', async (req, res) => {
 userRouter.get('/:id', async (req, res) => {
   try {
     let id = Number(req.params.id)
-    console.log(id)
-    let user = await userControllers.readById(id)  
+    let user = await userControllers.readById(id)
     return res.status(200).json(user)
   } catch(err) {
       return res.status(500).json({
@@ -49,8 +48,7 @@ userRouter.post('/', async (req, res) => {
 userRouter.delete('/:id', async (req, res) => {
   try {
     let id = Number(req.params.id)
-    console.log(id)
-    let user = await userControllers.delete(id)  
+    let user = await userControllers.delete(id)
     return res.status(200).json(user)
   } catch(err) {
       return res.status(500).json({
